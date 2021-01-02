@@ -37,10 +37,7 @@ void Node::addChildNode(unique_ptr<Node> childNode)
 {
 	this->childNodes.push_back(move(childNode));
 }
-Value* IRError(string message) {
-	cout<<message<<endl;
-	return nullptr;
-}
+
 Type* getType(string returnVal) {
 	if (returnVal == "i16" || returnVal == "u16") {
 		return Type::getInt16Ty(TheContext);
@@ -399,7 +396,6 @@ Value* Node::codegen() {
 		}
 		
 	}
-
 	case node_type::BlockExpression: {
 		int i = 0;
 		//保存变量列表
@@ -495,7 +491,7 @@ Value* Node::codegen() {
 	}
 	case node_type::Variable: {
 		Value* V = NamedValues[value];
-		if (!V)return IRError("没有此变量");
+		if (!V)return LogErrorV("没有此变量");
 		else return Builder.CreateLoad(V, value);
 	}
 	case node_type::CycleExpression: {
@@ -696,13 +692,13 @@ Value* Node::codegen() {
 		}
 		
 		Function* Callee = TheModule->getFunction(name);
-		if (!Callee)return IRError("函数不存在");
+		if (!Callee)return LogErrorV("函数不存在");
 		if (Args.size() != Callee->arg_size())
-			return IRError("参数数量不匹配");
+			return LogErrorV("参数数量不匹配");
 		int j = 0;
 		for (auto& calleeArg : Callee->args()) {
 			if (calleeArg.getType() != Args[j]->getType())
-				return IRError("参数类型不匹配");
+				return LogErrorV("参数类型不匹配");
 			j++;
 		}
 
