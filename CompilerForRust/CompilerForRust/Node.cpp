@@ -252,7 +252,7 @@ Value* Node::codegen() {
 		}
 
 	}
-	//后来我发现LHS可以再分LHS OP RHS ，不知道还有没有其他情况，目前操作就是加个判断看看是什么，感觉分的时候应该有一个binaryexpression会更好看一些，但好像因为左递归的问题去掉了
+	//后来我发现LHS可以再分LHS OP RHS ，不知道还有没有其他情况，目前操作就是加个判断看看是什么，感觉分的时候应该有一个binaryexpression会更好看一些
 	case node_type::LHS: {
 		node_type firstType = childNodes[0]->type;
 		string returnValue;
@@ -700,7 +700,7 @@ Value* Node::codegen() {
 		if (Args.size() != Callee->arg_size())
 			return IRError("参数数量不匹配");
 		int j = 0;
-		for (auto &calleeArg : Callee->args()) {
+		for (auto& calleeArg : Callee->args()) {
 			if (calleeArg.getType() != Args[j]->getType())
 				return IRError("参数类型不匹配");
 			j++;
