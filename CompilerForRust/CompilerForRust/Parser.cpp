@@ -732,7 +732,7 @@ unique_ptr<Node> Parser::LoopExpression() {
 }
 unique_ptr<Node> Parser::FunctionIdentifier(){
 	auto value = eat(token_type::IDENTIFIER);
-	unique_ptr<Node> functionIdentifier(new Node(value, node_type::Identifier));
+	unique_ptr<Node> functionIdentifier(new Node(value, node_type::FunctionIdentifier));
 	return functionIdentifier;
 }
 unique_ptr<Node> Parser::ParameterList(){
