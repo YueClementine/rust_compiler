@@ -18,8 +18,9 @@ void Parser::parse()
 	lex->print(); // Write tokens to the log file
 
 	ast->tree = Program(); // Call Recursive descent parser
-	ast->print(); // Write AST to the log file
-	
+	//ast->print(); // Write AST to the log file
+	auto* IR = ast->tree->codegen();
+
 }
 
 //Node* Parser::getAst()
@@ -84,7 +85,7 @@ unique_ptr<Node> Parser::FunctionDefinitions() {
 
 unique_ptr<Node> Parser::FunctionDefinition()
 { 
-	unique_ptr<Node> functionDefinitionNode(new Node("", node_type::FunctionIdentifier));
+	unique_ptr<Node> functionDefinitionNode(new Node("", node_type::FunctionDefinition));
 
 	unique_ptr<Node> tokenNodeFN(new Node(eat(token_type::FN), node_type::Token));
 	functionDefinitionNode->addChildNode(move(tokenNodeFN));
