@@ -21,7 +21,9 @@ CompilerForRust/CompilerForRust/log.txt
 CompilerForRust/CompilerForRust/CompilerForRust.vcxproj
 *.vcxproj
 CompilerForRust/CompilerForRust/CompilerForRust.vcxproj
-CompilerForRust/CompilerForRust/x64/Debug/CompilerForRust.log
-CompilerForRust/CompilerForRust/x64/Debug/CompilerForRust.exe.recipe
-CompilerForRust/CompilerForRust/log.txt
-CompilerForRust/CompilerForRust/CompilerForRust.vcxproj
+/CompilerForRust/CompilerForRust/x64
+/CompilerForRust/CompilerForRust/CompilerForRust.vcxproj
+/CompilerForRust/CompilerForRust/CompilerForRust.vcxproj.filters
+/CompilerForRust/CompilerForRust/CompilerForRust.vcxproj.user
+/CompilerForRust/CompilerForRust/log.txt
+/CompilerForRust/x64
