@@ -8,7 +8,6 @@
 using namespace std;
 class Parser
 {
-public:
 	Lexer* lex;
 	AST* ast;
 
