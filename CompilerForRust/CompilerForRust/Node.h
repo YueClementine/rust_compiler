@@ -1,5 +1,4 @@
 #pragma once
-//#include "../include/KaleidoscopeJIT.h"
 #include "llvm/ADT/APFloat.h"
 #include "llvm/ADT/STLExtras.h"
 #include "llvm/IR/BasicBlock.h"
@@ -7,20 +6,19 @@
 #include "llvm/IR/DerivedTypes.h"
 #include "llvm/IR/Function.h"
 #include "llvm/IR/IRBuilder.h"
-#include "llvm/IR/Instructions.h"
 #include "llvm/IR/LLVMContext.h"
-#include "llvm/IR/LegacyPassManager.h"
 #include "llvm/IR/Module.h"
 #include "llvm/IR/Type.h"
 #include "llvm/IR/Verifier.h"
-#include "llvm/Support/TargetSelect.h"
-#include "llvm/Target/TargetMachine.h"
-#include "llvm/Transforms/InstCombine/InstCombine.h"
-#include "llvm/Transforms/Scalar.h"
-#include "llvm/Transforms/Scalar/GVN.h"
-#include "llvm/Transforms/Utils.h"
-#include <iostream>
+#include <algorithm>
+#include <cctype>
+#include <cstdio>
+#include <cstdlib>
+#include <map>
+#include <memory>
+#include <string>
 #include <vector>
+#include <iostream>
 
 
 using namespace std;
@@ -49,7 +47,8 @@ static map<string, int> initMap() {
     BinopPrecedence["!"] = 100;
     return BinopPrecedence;
 };
-static const map<string, int>BinopPrecedence=initMap();
+static const map<string, int>BinopPrecedence = initMap();
+
 
 
 static const char* nodeTypeList[] = {
@@ -106,7 +105,7 @@ static const char* nodeTypeList[] = {
 
     "AssignmentOperator",             // [*,/,-,+,<<,>>,%,&,^,|]?=
 /*  Ïû³ý×óµÝ¹éÆúÓÃ
-* 
+*
 *   "LogicalAndExpression",           // &&
 *   "InclusiveOrExpression",          // |
 *   "ExclusiveOrExpression",          // ^
@@ -125,7 +124,7 @@ static const char* nodeTypeList[] = {
 
     "PRINTLN", // println!("{}", id);
 /*  Ïû³ý×óµÝ¹éÆúÓÃ
-* 
+*
 *   "LogicalOrExpressionE",            //Ïû³ý×óµÝ¹é
 *   "LogicalAndExpressionE",
 *   "InclusiveOrExpressionE",
@@ -196,7 +195,7 @@ enum class node_type
 
     AssignmentOperator,             // [*,/,-,+,<<,>>,%,&,^,|]?=
 /*  Ïû³ý×óµÝ¹éÆúÓÃ
-* 
+*
 *    LogicalAndExpression,           // &&
 *    InclusiveOrExpression,          // |
 *    ExclusiveOrExpression,          // ^
@@ -207,16 +206,16 @@ enum class node_type
 *    AdditiveExpression,             // + | -
 *    MultiplicativeExpression,       // * | / | %
 *    NotExpression,                  // !
-*/    
-    PrimaryExpression,              // (?)?
-    ConditionStatement,       //Ìõ¼þÓï¾ä
+*/
+PrimaryExpression,              // (?)?
+ConditionStatement,       //Ìõ¼þÓï¾ä
 
-    COMMENT, //×¢ÊÍ
+COMMENT, //×¢ÊÍ
 
-    PRINTLN, // println!("{}", id);
+PRINTLN, // println!("{}", id);
 
 /*   Ïû³ý×óµÝ¹éÆúÓÃ
-* 
+*
 *    LogicalOrExpressionE,            //Ïû³ý×óµÝ¹é
 *    LogicalAndExpressionE,
 *    InclusiveOrExpressionE,
@@ -229,9 +228,10 @@ enum class node_type
 *    MultiplicativeExpressionE,
 */
 
-    Token,                     //±£´ætoken
+Token,                     //±£´ætoken
 
 };
+
 class Node
 {
 public:
@@ -239,11 +239,16 @@ public:
     node_type type;
     vector<unique_ptr<Node>> childNodes;
 
+
+
 public:
     Node(const string value, node_type type);
     Node(const string value, node_type type, vector<unique_ptr<Node>> childNodes);
     Node();
     ~Node();
     void addChildNode(unique_ptr<Node> childNode);
+    void Init();
+    void print();
     Value* codegen();
+    Type* getType(string returnVal);
 };
