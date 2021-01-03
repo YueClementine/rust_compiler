@@ -481,7 +481,7 @@ C:\doc\llvm\llvm-10.0.1.src\include\llvm\ADT\SmallVector.h(643): message : 查�
           ]
 C:\doc\llvm\llvm-10.0.1.src\include\llvm\IR\InstrTypes.h(1881): message : 查看对正在编译的函数 模板 实例化“llvm::OperandBundleDefT<llvm::Value *> &llvm::SmallVectorImpl<llvm::OperandBundleDef>::emplace_back<llvm::OperandBundleUse>(llvm::OperandBundleUse &&)”的引用
 C:\doc\llvm\llvm-10.0.1.src\include\llvm\IR\InstrTypes.h(1881): message : 查看对正在编译的函数 模板 实例化“llvm::OperandBundleDefT<llvm::Value *> &llvm::SmallVectorImpl<llvm::OperandBundleDef>::emplace_back<llvm::OperandBundleUse>(llvm::OperandBundleUse &&)”的引用
-  Parser.cpp
+  main.cpp
 C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Lexer.h(1,1): warning C4828: 文件包含在偏移 0x116 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
 C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Lexer.h(1,1): warning C4828: 文件包含在偏移 0x118 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
 C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Lexer.h(1,1): warning C4828: 文件包含在偏移 0x119 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
@@ -1034,51 +1034,7 @@ C:\doc\llvm\llvm-10.0.1.src\include\llvm\ADT\SmallVector.h(643): message : 查�
           ]
 C:\doc\llvm\llvm-10.0.1.src\include\llvm\IR\InstrTypes.h(1881): message : 查看对正在编译的函数 模板 实例化“llvm::OperandBundleDefT<llvm::Value *> &llvm::SmallVectorImpl<llvm::OperandBundleDef>::emplace_back<llvm::OperandBundleUse>(llvm::OperandBundleUse &&)”的引用
 C:\doc\llvm\llvm-10.0.1.src\include\llvm\IR\InstrTypes.h(1881): message : 查看对正在编译的函数 模板 实例化“llvm::OperandBundleDefT<llvm::Value *> &llvm::SmallVectorImpl<llvm::OperandBundleDef>::emplace_back<llvm::OperandBundleUse>(llvm::OperandBundleUse &&)”的引用
-  Token.cpp
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1c50 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1c51 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1c54 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1c56 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1d08 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1d09 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1d0c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1d0d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1d0e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1d0f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1e4c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1e4d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1e50 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1e51 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1e54 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.cpp(1,1): warning C4828: 文件包含在偏移 0x1e55 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0x88 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0x8a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa5 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa6 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xbf 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xc1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xc2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xd9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xda 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xdd 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xde 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xf5 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa26 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa28 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa40 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa41 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa42 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa43 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa5f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa61 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa62 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa77 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa78 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa7b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa7c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
-C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Token.h(1,1): warning C4828: 文件包含在偏移 0xa90 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
   正在生成代码...
+C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\CompilerForRust\Node.cpp(933): warning C4715: “Node::codegen”: 不是所有的控件路径都返回值
 LINK : warning LNK4044: 无法识别的选项“/utf-8”；已忽略
   CompilerForRust.vcxproj -> C:\Users\yue\Documents\GitHub\rust_compiler\CompilerForRust\x64\Debug\CompilerForRust.exe
