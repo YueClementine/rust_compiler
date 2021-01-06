@@ -910,7 +910,8 @@ unique_ptr<Node> Parser::PrimaryExpression() {
 		primaryExpressionNode->addChildNode(move(child));
 	}
 	else if (tryEat(token_type::CHARACTER) || tryEat(token_type::NUMBER) ||
-		tryEat(token_type::DOUBLE_NUMBER) || tryEat(token_type::BOOL))
+		tryEat(token_type::DOUBLE_NUMBER) || tryEat(token_type::BOOL)|| 
+		tryEat(token_type::TRUE)|| tryEat(token_type::FALSE))
 	{
 		child = LiteralExpression();
 		primaryExpressionNode->addChildNode(move(child));
@@ -983,9 +984,18 @@ unique_ptr<Node> Parser::PRINTLN() {
 	unique_ptr<Node>tokenNodeQUOTES1(new Node(eat(token_type::QUOTES), node_type::Token));
 	printlnNode->addChildNode(move(tokenNodeQUOTES1));
 
-	//eat(token_type::COMMA);
+	eat(token_type::COMMA);
 	//auto callParameterListChild = CallParameterList();
 	//printlnNode->addChildNode(move(callParameterListChild));
+	if (tryEat(token_type::IDENTIFIER)) {
+		auto idChild = Variable();
+		printlnNode->addChildNode(move(idChild));
+	}
+	else if (tryEat(token_type::CHAR) || tryEat(token_type::NUMBER) ||
+		tryEat(token_type::DOUBLE_NUMBER) || tryEat(token_type::BOOL)) {
+		auto literChild = LiteralExpression();
+		printlnNode->addChildNode(move(literChild));
+	}
 
 	unique_ptr<Node>tokenNodeRPAR(new Node(eat(token_type::RPAR), node_type::Token));
 	printlnNode->addChildNode(move(tokenNodeRPAR));
