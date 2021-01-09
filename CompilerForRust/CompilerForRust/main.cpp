@@ -4,8 +4,7 @@
 using namespace std;
 map<int, string>path;
 void InitMap() {
-	path[0] = "intTest.txt";
-	path[1] = "floatTest.txt";
+	path[0] = "VariTest.txt";
 	path[2] = "forTest.txt";
 	path[3] = "functionCallTest.txt";
 	path[4] = "ifTest.txt";
@@ -14,7 +13,7 @@ void InitMap() {
 }
 int main() {
 	InitMap();
-	string file = path[0];
+	string file = path[3];
 	Parser parser(file);
 	parser.parse();
 

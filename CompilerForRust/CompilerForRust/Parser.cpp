@@ -184,6 +184,7 @@ unique_ptr<Node> Parser::Statements() {
 	}
 	return statementsNode;
 }
+
 unique_ptr<Node> Parser::Statement() {
 	if (tryEat(token_type::LET)) {
 		auto declarationStatementChild = DeclarationStatement();
@@ -237,6 +238,7 @@ unique_ptr<Node> Parser::Statement() {
 		return statementNode;
 	}
 }
+
 unique_ptr<Node> Parser::DeclarationStatement() {
 	unique_ptr<Node>declarationStatementNode(new Node("", node_type::DeclarationStatement));
 
@@ -269,6 +271,7 @@ unique_ptr<Node> Parser::DeclarationStatement() {
 	}
 	return declarationStatementNode;
 }
+
 unique_ptr<Node>Parser::DeclarationRightStatement() {
 	unique_ptr<Node>declarationRightStatementNode(new Node("", node_type::DeclarationRightStatement));
 	if (tryEat(token_type::LBRACE)) {
@@ -294,6 +297,7 @@ unique_ptr<Node>Parser::DeclarationRightStatement() {
 	}
 	return declarationRightStatementNode;
 }
+
 unique_ptr<Node> Parser::ExpressionStatement() {
 	unique_ptr<Node> child;
 	if (tryEat(token_type::CHARACTER) || tryEat(token_type::NUMBER) ||
@@ -320,6 +324,7 @@ unique_ptr<Node> Parser::ExpressionStatement() {
 	expressionStatementNode->addChildNode(move(child));
 	return expressionStatementNode;
 }
+
 unique_ptr<Node> Parser::AssignmentExpression() {
 	auto variableChild = Variable();
 	auto assignmentOperatorChild = AssignmentOperator();
@@ -330,6 +335,7 @@ unique_ptr<Node> Parser::AssignmentExpression() {
 	assignmentExpressionNode->addChildNode(move(BinaryExpressionChild));
 	return assignmentExpressionNode;
 }
+
 unique_ptr<Node> Parser::TypeExpression() {
 	unique_ptr<Node> typeExpressionNode(new Node("", node_type::TypeExpression));
 
@@ -348,6 +354,7 @@ unique_ptr<Node> Parser::TypeExpression() {
 
 	return typeExpressionNode;
 }
+
 unique_ptr<Node> Parser::VariableDefinition() {
 	unique_ptr<Node>variableDefinitionNode(new Node("", node_type::VariableDefinition));
 	if (tryEat(token_type::MUT)) {
@@ -364,6 +371,7 @@ unique_ptr<Node> Parser::VariableDefinition() {
 	}
 	return variableDefinitionNode;
 }
+
 unique_ptr<Node> Parser::DataType() {
 	string value;
 	cout << nowToken();
@@ -380,7 +388,9 @@ unique_ptr<Node> Parser::DataType() {
 	unique_ptr<Node> dataTypeNode(new Node(value, node_type::DataType));
 	return dataTypeNode;
 }
-unique_ptr<Node> Parser::LiteralExpression() {
+
+unique_ptr<Node> Parser::LiteralExpression()
+{
 	unique_ptr<Node>literalExpressionNode(new Node("", node_type::LiteralExpression));
 	if (tryEat(token_type::CHARACTER)) {
 		auto charStrLiteralChild = CHAR_STR_LITERAL();
@@ -400,6 +410,7 @@ unique_ptr<Node> Parser::LiteralExpression() {
 	}
 	return literalExpressionNode;
 }
+
 unique_ptr<Node> Parser::Variable() {
 	auto value = eat(token_type::IDENTIFIER);
 	unique_ptr<Node> variableNode(new Node(value, node_type::Variable));
@@ -421,6 +432,7 @@ unique_ptr<Node> Parser::BlockExpression() {
 
 	return blockExpressionNode;
 }
+
 int Parser::GetTokPrecedence(string op) {
 	auto key = BinopPrecedence.find(op);
 	if (key != BinopPrecedence.end()) {

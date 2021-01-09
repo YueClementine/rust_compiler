@@ -7,8 +7,8 @@ main WITH TYPE IDENTIFIER col:4 row:1
 let WITH TYPE LET col:2 row:2
 a WITH TYPE IDENTIFIER col:6 row:2
 = WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
+10 WITH TYPE NUMBER col:10 row:2
+; WITH TYPE SEMICOLON col:12 row:2
 let WITH TYPE LET col:2 row:3
 b WITH TYPE IDENTIFIER col:6 row:3
 = WITH TYPE SET col:8 row:3
@@ -19,1263 +19,45 @@ c WITH TYPE IDENTIFIER col:6 row:4
 = WITH TYPE SET col:8 row:4
 'a' WITH TYPE CHARACTER col:10 row:4
 ; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
+// WITH TYPE COMMENT col:2 row:5
+if WITH TYPE IF col:2 row:6
+a WITH TYPE IDENTIFIER col:5 row:6
+== WITH TYPE EQUALITY col:6 row:6
+1 WITH TYPE NUMBER col:8 row:6
+{ WITH TYPE LBRACE col:9 row:6
+a WITH TYPE IDENTIFIER col:3 row:7
+= WITH TYPE SET col:4 row:7
+5 WITH TYPE NUMBER col:5 row:7
++ WITH TYPE PLUS col:6 row:7
+b WITH TYPE IDENTIFIER col:7 row:7
+; WITH TYPE SEMICOLON col:8 row:7
+a WITH TYPE IDENTIFIER col:3 row:8
+*= WITH TYPE STAREQUAL col:4 row:8
+54 WITH TYPE NUMBER col:6 row:8
+; WITH TYPE SEMICOLON col:8 row:8
+b WITH TYPE IDENTIFIER col:3 row:9
+= WITH TYPE SET col:4 row:9
+5 WITH TYPE NUMBER col:5 row:9
+; WITH TYPE SEMICOLON col:6 row:9
+} WITH TYPE RBRACE col:7 row:9
+else WITH TYPE ELSE col:3 row:10
+{ WITH TYPE LBRACE col:7 row:10
 b WITH TYPE IDENTIFIER col:3 row:11
 = WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
-
------- AST ------
-+-Program
-  +-FunctionDefinitions
-    +-FunctionIdentifier
-      +-TOKEN (fn)
-      +-Identifier (main)
-      +-TOKEN (()
-      +-ParameterList
-      +-BlockExpression
-        +-TOKEN ({)
-        +-Statements
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (a)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (b)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (c)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-CHAR_STR_LITERAL ('a')
-          +-TOKEN (;)
-          +-Statement
-            +-PRINTLN
-              +-TOKEN (println!)
-              +-TOKEN (()
-              +-TOKEN (")
-              +-TOKEN (")
-              +-TOKEN ())
-          +-TOKEN (;)
-          +-COMMENT
-            +-TOKEN (//)
-          +-IfExpression
-            +-TOKEN (if)
-            +-ConditionStatement
-              +-BinaryExpression
-                +-LHS
-                  +-PrimaryExpression
-                    +-Variable (a)
-                +-OP (==)
-                +-RHS
-                  +-PrimaryExpression
-                    +-LiteralExpression
-                      +-INTEGER_LITERAL (1)
-            +-BlockExpression
-              +-TOKEN ({)
-              +-Statements
-                +-COMMENT
-                  +-TOKEN (//)
-                +-COMMENT
-                  +-TOKEN (//)
-                +-Statement
-                  +-AssignmentExpression
-                    +-Variable (a)
-                    +-AssignmentOperator (=)
-                    +-BinaryExpression
-                      +-LHS
-                        +-PrimaryExpression
-                          +-LiteralExpression
-                            +-INTEGER_LITERAL (5)
-                      +-OP (+)
-                      +-RHS
-                        +-LHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (6)
-                        +-OP (*)
-                        +-RHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (3)
-                +-TOKEN (;)
-                +-Statement
-                  +-AssignmentExpression
-                    +-Variable (b)
-                    +-AssignmentOperator (=)
-                    +-BinaryExpression
-                      +-LHS
-                        +-PrimaryExpression
-                          +-Variable (a)
-                      +-OP (*)
-                      +-RHS
-                        +-PrimaryExpression
-                          +-TOKEN (()
-                          +-BinaryExpression
-                            +-LHS
-                              +-PrimaryExpression
-                                +-LiteralExpression
-                                  +-INTEGER_LITERAL (3)
-                            +-OP (+)
-                            +-RHS
-                              +-PrimaryExpression
-                                +-LiteralExpression
-                                  +-INTEGER_LITERAL (6)
-                          +-TOKEN ())
-                +-TOKEN (;)
-              +-TOKEN (})
-        +-TOKEN (})
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
-= WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
-
------- AST ------
-+-Program
-  +-FunctionDefinitions
-    +-FunctionIdentifier
-      +-TOKEN (fn)
-      +-Identifier (main)
-      +-TOKEN (()
-      +-ParameterList
-      +-BlockExpression
-        +-TOKEN ({)
-        +-Statements
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (a)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (b)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (c)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-CHAR_STR_LITERAL ('a')
-          +-TOKEN (;)
-          +-Statement
-            +-PRINTLN
-              +-TOKEN (println!)
-              +-TOKEN (()
-              +-TOKEN (")
-              +-TOKEN (")
-              +-TOKEN ())
-          +-TOKEN (;)
-          +-COMMENT
-            +-TOKEN (//)
-          +-IfExpression
-            +-TOKEN (if)
-            +-ConditionStatement
-              +-BinaryExpression
-                +-LHS
-                  +-PrimaryExpression
-                    +-Variable (a)
-                +-OP (==)
-                +-RHS
-                  +-PrimaryExpression
-                    +-LiteralExpression
-                      +-INTEGER_LITERAL (1)
-            +-BlockExpression
-              +-TOKEN ({)
-              +-Statements
-                +-COMMENT
-                  +-TOKEN (//)
-                +-COMMENT
-                  +-TOKEN (//)
-                +-Statement
-                  +-AssignmentExpression
-                    +-Variable (a)
-                    +-AssignmentOperator (=)
-                    +-BinaryExpression
-                      +-LHS
-                        +-PrimaryExpression
-                          +-LiteralExpression
-                            +-INTEGER_LITERAL (5)
-                      +-OP (+)
-                      +-RHS
-                        +-LHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (6)
-                        +-OP (*)
-                        +-RHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (3)
-                +-TOKEN (;)
-                +-Statement
-                  +-AssignmentExpression
-                    +-Variable (b)
-                    +-AssignmentOperator (=)
-                    +-BinaryExpression
-                      +-LHS
-                        +-PrimaryExpression
-                          +-Variable (a)
-                      +-OP (*)
-                      +-RHS
-                        +-PrimaryExpression
-                          +-TOKEN (()
-                          +-BinaryExpression
-                            +-LHS
-                              +-PrimaryExpression
-                                +-LiteralExpression
-                                  +-INTEGER_LITERAL (3)
-                            +-OP (+)
-                            +-RHS
-                              +-PrimaryExpression
-                                +-LiteralExpression
-                                  +-INTEGER_LITERAL (6)
-                          +-TOKEN ())
-                +-TOKEN (;)
-              +-TOKEN (})
-        +-TOKEN (})
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
-= WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
-
------- AST ------
-+-Program
-  +-FunctionDefinitions
-    +-FunctionIdentifier
-      +-TOKEN (fn)
-      +-Identifier (main)
-      +-TOKEN (()
-      +-ParameterList
-      +-BlockExpression
-        +-TOKEN ({)
-        +-Statements
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (a)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (b)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (c)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-CHAR_STR_LITERAL ('a')
-          +-TOKEN (;)
-          +-Statement
-            +-PRINTLN
-              +-TOKEN (println!)
-              +-TOKEN (()
-              +-TOKEN (")
-              +-TOKEN (")
-              +-TOKEN ())
-          +-TOKEN (;)
-          +-COMMENT
-            +-TOKEN (//)
-          +-IfExpression
-            +-TOKEN (if)
-            +-ConditionStatement
-              +-BinaryExpression
-                +-LHS
-                  +-PrimaryExpression
-                    +-Variable (a)
-                +-OP (==)
-                +-RHS
-                  +-PrimaryExpression
-                    +-LiteralExpression
-                      +-INTEGER_LITERAL (1)
-            +-BlockExpression
-              +-TOKEN ({)
-              +-Statements
-                +-COMMENT
-                  +-TOKEN (//)
-                +-COMMENT
-                  +-TOKEN (//)
-                +-Statement
-                  +-AssignmentExpression
-                    +-Variable (a)
-                    +-AssignmentOperator (=)
-                    +-BinaryExpression
-                      +-LHS
-                        +-PrimaryExpression
-                          +-LiteralExpression
-                            +-INTEGER_LITERAL (5)
-                      +-OP (+)
-                      +-RHS
-                        +-LHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (6)
-                        +-OP (*)
-                        +-RHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (3)
-                +-TOKEN (;)
-                +-Statement
-                  +-AssignmentExpression
-                    +-Variable (b)
-                    +-AssignmentOperator (=)
-                    +-BinaryExpression
-                      +-LHS
-                        +-PrimaryExpression
-                          +-Variable (a)
-                      +-OP (*)
-                      +-RHS
-                        +-PrimaryExpression
-                          +-TOKEN (()
-                          +-BinaryExpression
-                            +-LHS
-                              +-PrimaryExpression
-                                +-LiteralExpression
-                                  +-INTEGER_LITERAL (3)
-                            +-OP (+)
-                            +-RHS
-                              +-PrimaryExpression
-                                +-LiteralExpression
-                                  +-INTEGER_LITERAL (6)
-                          +-TOKEN ())
-                +-TOKEN (;)
-              +-TOKEN (})
-        +-TOKEN (})
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
-= WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
-
------- AST ------
-+-Program
-  +-FunctionDefinitions
-    +-FunctionIdentifier
-      +-TOKEN (fn)
-      +-Identifier (main)
-      +-TOKEN (()
-      +-ParameterList
-      +-BlockExpression
-        +-TOKEN ({)
-        +-Statements
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (a)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (b)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (c)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-CHAR_STR_LITERAL ('a')
-          +-TOKEN (;)
-          +-Statement
-            +-PRINTLN
-              +-TOKEN (println!)
-              +-TOKEN (()
-              +-TOKEN (")
-              +-TOKEN (")
-              +-TOKEN ())
-          +-TOKEN (;)
-          +-COMMENT
-            +-TOKEN (//)
-          +-IfExpression
-            +-TOKEN (if)
-            +-ConditionStatement
-              +-BinaryExpression
-                +-LHS
-                  +-PrimaryExpression
-                    +-Variable (a)
-                +-OP (==)
-                +-RHS
-                  +-PrimaryExpression
-                    +-LiteralExpression
-                      +-INTEGER_LITERAL (1)
-            +-BlockExpression
-              +-TOKEN ({)
-              +-Statements
-                +-COMMENT
-                  +-TOKEN (//)
-                +-COMMENT
-                  +-TOKEN (//)
-                +-Statement
-                  +-AssignmentExpression
-                    +-Variable (a)
-                    +-AssignmentOperator (=)
-                    +-BinaryExpression
-                      +-LHS
-                        +-PrimaryExpression
-                          +-LiteralExpression
-                            +-INTEGER_LITERAL (5)
-                      +-OP (+)
-                      +-RHS
-                        +-LHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (6)
-                        +-OP (*)
-                        +-RHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (3)
-                +-TOKEN (;)
-                +-Statement
-                  +-AssignmentExpression
-                    +-Variable (b)
-                    +-AssignmentOperator (=)
-                    +-BinaryExpression
-                      +-LHS
-                        +-PrimaryExpression
-                          +-Variable (a)
-                      +-OP (*)
-                      +-RHS
-                        +-PrimaryExpression
-                          +-TOKEN (()
-                          +-BinaryExpression
-                            +-LHS
-                              +-PrimaryExpression
-                                +-LiteralExpression
-                                  +-INTEGER_LITERAL (3)
-                            +-OP (+)
-                            +-RHS
-                              +-PrimaryExpression
-                                +-LiteralExpression
-                                  +-INTEGER_LITERAL (6)
-                          +-TOKEN ())
-                +-TOKEN (;)
-              +-TOKEN (})
-        +-TOKEN (})
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
-= WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
-
------- AST ------
-+-Program
-  +-FunctionDefinitions
-    +-FunctionIdentifier
-      +-TOKEN (fn)
-      +-Identifier (main)
-      +-TOKEN (()
-      +-ParameterList
-      +-BlockExpression
-        +-TOKEN ({)
-        +-Statements
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (a)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (b)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (c)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-CHAR_STR_LITERAL ('a')
-          +-TOKEN (;)
-          +-Statement
-            +-PRINTLN
-              +-TOKEN (println!)
-              +-TOKEN (()
-              +-TOKEN (")
-              +-TOKEN (")
-              +-TOKEN ())
-          +-TOKEN (;)
-          +-COMMENT
-            +-TOKEN (//)
-          +-IfExpression
-            +-TOKEN (if)
-            +-ConditionStatement
-              +-BinaryExpression
-                +-LHS
-                  +-PrimaryExpression
-                    +-Variable (a)
-                +-OP (==)
-                +-RHS
-                  +-PrimaryExpression
-                    +-LiteralExpression
-                      +-INTEGER_LITERAL (1)
-            +-BlockExpression
-              +-TOKEN ({)
-              +-Statements
-                +-COMMENT
-                  +-TOKEN (//)
-                +-COMMENT
-                  +-TOKEN (//)
-                +-Statement
-                  +-AssignmentExpression
-                    +-Variable (a)
-                    +-AssignmentOperator (=)
-                    +-BinaryExpression
-                      +-LHS
-                        +-PrimaryExpression
-                          +-LiteralExpression
-                            +-INTEGER_LITERAL (5)
-                      +-OP (+)
-                      +-RHS
-                        +-LHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (6)
-                        +-OP (*)
-                        +-RHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (3)
-                +-TOKEN (;)
-                +-Statement
-                  +-AssignmentExpression
-                    +-Variable (b)
-                    +-AssignmentOperator (=)
-                    +-BinaryExpression
-                      +-LHS
-                        +-PrimaryExpression
-                          +-Variable (a)
-                      +-OP (*)
-                      +-RHS
-                        +-PrimaryExpression
-                          +-TOKEN (()
-                          +-BinaryExpression
-                            +-LHS
-                              +-PrimaryExpression
-                                +-LiteralExpression
-                                  +-INTEGER_LITERAL (3)
-                            +-OP (+)
-                            +-RHS
-                              +-PrimaryExpression
-                                +-LiteralExpression
-                                  +-INTEGER_LITERAL (6)
-                          +-TOKEN ())
-                +-TOKEN (;)
-              +-TOKEN (})
-        +-TOKEN (})
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
-= WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
-= WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
-= WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
-= WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:------ TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
-= WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:10 row:1
-let WITH TYPE LET col:2 row:2
-a WITH TYPE IDENTIFIER col:6 row:2
-= WITH TYPE SET col:8 row:2
-1 WITH TYPE NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:11 row:2
-let WITH TYPE LET col:2 row:3
-b WITH TYPE IDENTIFIER col:6 row:3
-= WITH TYPE SET col:8 row:3
-1 WITH TYPE NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:11 row:3
-let WITH TYPE LET col:2 row:4
-c WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-if WITH TYPE IF col:2 row:7
-a WITH TYPE IDENTIFIER col:5 row:7
-== WITH TYPE EQUALITY col:6 row:7
-1 WITH TYPE NUMBER col:8 row:7
-{ WITH TYPE LBRACE col:10 row:7
-// WITH TYPE COMMENT col:2 row:8
-// WITH TYPE COMMENT col:2 row:9
-a WITH TYPE IDENTIFIER col:3 row:10
-= WITH TYPE SET col:4 row:10
-5 WITH TYPE NUMBER col:5 row:10
-+ WITH TYPE PLUS col:6 row:10
-6 WITH TYPE NUMBER col:7 row:10
-* WITH TYPE STAR col:8 row:10
-3 WITH TYPE NUMBER col:9 row:10
-; WITH TYPE SEMICOLON col:10 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
-= WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-3 WITH TYPE NUMBER col:8 row:11
-+ WITH TYPE PLUS col:9 row:11
-6 WITH TYPE NUMBER col:10 row:11
-) WITH TYPE RPAR col:11 row:11
-; WITH TYPE SEMICOLON col:12 row:11
-} WITH TYPE RBRACE col:2 row:12
-} WITH TYPE RBRACE col:1 row:14
+6 WITH TYPE NUMBER col:5 row:11
+; WITH TYPE SEMICOLON col:6 row:11
+} WITH TYPE RBRACE col:7 row:11
+println! WITH TYPE PRINTLN col:3 row:12
+( WITH TYPE LPAR col:11 row:12
+" WITH TYPE QUOTES col:12 row:12
+{ WITH TYPE LBRACE col:13 row:12
+} WITH TYPE RBRACE col:14 row:12
+" WITH TYPE QUOTES col:15 row:12
+, WITH TYPE COMMA col:17 row:12
+b WITH TYPE IDENTIFIER col:19 row:12
+) WITH TYPE RPAR col:20 row:12
+; WITH TYPE SEMICOLON col:21 row:12
+} WITH TYPE RBRACE col:1 row:13
 
 ------ AST ------
 +-Program
@@ -1299,7 +81,7 @@ a WITH TYPE IDENTIFIER col:5 row:11
                   +-LHS
                     +-PrimaryExpression
                       +-LiteralExpression
-                        +-INTEGER_LITERAL (1)
+                        +-INTEGER_LITERAL (10)
           +-TOKEN (;)
           +-Statement
             +-DeclarationStatement
@@ -1310,7 +92,102 @@ a WITH TYPE IDENTIFIER col:5 row:11
               +-DeclarationRightStatement
                 +-BinaryExpression
                   +-LHS
-                    +-PrimaryExpression------ TOKENS ------
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (1)
+          +-TOKEN (;)
+          +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (c)
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-CHAR_STR_LITERAL ('a')
+          +-TOKEN (;)
+          +-COMMENT
+            +-TOKEN (//)
+          +-IfExpression
+            +-TOKEN (if)
+            +-ConditionStatement
+              +-BinaryExpression
+                +-LHS
+                  +-PrimaryExpression
+                    +-Variable (a)
+                +-OP (==)
+                +-RHS
+                  +-PrimaryExpression
+                    +-LiteralExpression
+                      +-INTEGER_LITERAL (1)
+            +-BlockExpression
+              +-TOKEN ({)
+              +-Statements
+                +-Statement
+                  +-AssignmentExpression
+                    +-Variable (a)
+                    +-AssignmentOperator (=)
+                    +-BinaryExpression
+                      +-LHS
+                        +-PrimaryExpression
+                          +-LiteralExpression
+                            +-INTEGER_LITERAL (5)
+                      +-OP (+)
+                      +-RHS
+                        +-PrimaryExpression
+                          +-Variable (b)
+                +-TOKEN (;)
+                +-Statement
+                  +-AssignmentExpression
+                    +-Variable (a)
+                    +-AssignmentOperator (*=)
+                    +-BinaryExpression
+                      +-LHS
+                        +-PrimaryExpression
+                          +-LiteralExpression
+                            +-INTEGER_LITERAL (54)
+                +-TOKEN (;)
+                +-Statement
+                  +-AssignmentExpression
+                    +-Variable (b)
+                    +-AssignmentOperator (=)
+                    +-BinaryExpression
+                      +-LHS
+                        +-PrimaryExpression
+                          +-LiteralExpression
+                            +-INTEGER_LITERAL (5)
+                +-TOKEN (;)
+              +-TOKEN (})
+            +-TOKEN (else)
+            +-BlockExpression
+              +-TOKEN ({)
+              +-Statements
+                +-Statement
+                  +-AssignmentExpression
+                    +-Variable (b)
+                    +-AssignmentOperator (=)
+                    +-BinaryExpression
+                      +-LHS
+                        +-PrimaryExpression
+                          +-LiteralExpression
+                            +-INTEGER_LITERAL (6)
+                +-TOKEN (;)
+              +-TOKEN (})
+          +-Statement
+            +-PRINTLN
+              +-TOKEN (println!)
+              +-TOKEN (()
+              +-TOKEN (")
+              +-TOKEN (")
+              +-Variable (b)
+              +-TOKEN ())
+          +-TOKEN (;)
+        +-TOKEN (})
+
+------ TOKENS ------
 fn WITH TYPE FN col:1 row:1
 main WITH TYPE IDENTIFIER col:4 row:1
 ( WITH TYPE LPAR col:8 row:1
@@ -1319,49 +196,98 @@ main WITH TYPE IDENTIFIER col:4 row:1
 let WITH TYPE LET col:2 row:2
 a WITH TYPE IDENTIFIER col:6 row:2
 = WITH TYPE SET col:8 row:2
-1.2 WITH TYPE DOUBLE_NUMBER col:10 row:2
-; WITH TYPE SEMICOLON col:13 row:2
+1 WITH TYPE NUMBER col:10 row:2
+; WITH TYPE SEMICOLON col:11 row:2
 let WITH TYPE LET col:2 row:3
 b WITH TYPE IDENTIFIER col:6 row:3
 = WITH TYPE SET col:8 row:3
-1.5 WITH TYPE DOUBLE_NUMBER col:10 row:3
-; WITH TYPE SEMICOLON col:13 row:3
+1 WITH TYPE NUMBER col:10 row:3
+; WITH TYPE SEMICOLON col:11 row:3
 let WITH TYPE LET col:2 row:4
 c WITH TYPE IDENTIFIER col:6 row:4
 = WITH TYPE SET col:8 row:4
-'a' WITH TYPE CHARACTER col:10 row:4
+1.5 WITH TYPE DOUBLE_NUMBER col:10 row:4
 ; WITH TYPE SEMICOLON col:13 row:4
-println! WITH TYPE PRINTLN col:3 row:5
-( WITH TYPE LPAR col:11 row:5
-" WITH TYPE QUOTES col:12 row:5
-aasd WITH TYPE IDENTIFIER col:13 row:5
-" WITH TYPE QUOTES col:17 row:5
-) WITH TYPE RPAR col:18 row:5
-; WITH TYPE SEMICOLON col:19 row:5
-// WITH TYPE COMMENT col:2 row:6
-// WITH TYPE COMMENT col:2 row:7
-// WITH TYPE COMMENT col:2 row:8
+let WITH TYPE LET col:2 row:5
+d WITH TYPE IDENTIFIER col:6 row:5
+= WITH TYPE SET col:8 row:5
+1.4 WITH TYPE DOUBLE_NUMBER col:10 row:5
+; WITH TYPE SEMICOLON col:13 row:5
+let WITH TYPE LET col:2 row:6
+e WITH TYPE IDENTIFIER col:6 row:6
+= WITH TYPE SET col:8 row:6
+'a' WITH TYPE CHARACTER col:10 row:6
+; WITH TYPE SEMICOLON col:13 row:6
+let WITH TYPE LET col:2 row:7
+f WITH TYPE IDENTIFIER col:6 row:7
+= WITH TYPE SET col:8 row:7
+true WITH TYPE TRUE col:10 row:7
+; WITH TYPE SEMICOLON col:14 row:7
+a WITH TYPE IDENTIFIER col:3 row:8
+= WITH TYPE SET col:4 row:8
+5 WITH TYPE NUMBER col:5 row:8
++ WITH TYPE PLUS col:6 row:8
+1 WITH TYPE NUMBER col:7 row:8
+; WITH TYPE SEMICOLON col:8 row:8
 a WITH TYPE IDENTIFIER col:3 row:9
-= WITH TYPE SET col:4 row:9
-5.6 WITH TYPE DOUBLE_NUMBER col:5 row:9
-+ WITH TYPE PLUS col:8 row:9
-b WITH TYPE IDENTIFIER col:9 row:9
-; WITH TYPE SEMICOLON col:10 row:9
+*= WITH TYPE STAREQUAL col:4 row:9
+b WITH TYPE IDENTIFIER col:6 row:9
+; WITH TYPE SEMICOLON col:7 row:9
 a WITH TYPE IDENTIFIER col:3 row:10
 *= WITH TYPE STAREQUAL col:4 row:10
-1.5 WITH TYPE DOUBLE_NUMBER col:6 row:10
-; WITH TYPE SEMICOLON col:9 row:10
-b WITH TYPE IDENTIFIER col:3 row:11
+30 WITH TYPE NUMBER col:6 row:10
+; WITH TYPE SEMICOLON col:8 row:10
+c WITH TYPE IDENTIFIER col:3 row:11
 = WITH TYPE SET col:4 row:11
-a WITH TYPE IDENTIFIER col:5 row:11
-* WITH TYPE STAR col:6 row:11
-( WITH TYPE LPAR col:7 row:11
-5.1 WITH TYPE DOUBLE_NUMBER col:8 row:11
-+ WITH TYPE PLUS col:11 row:11
-6.5 WITH TYPE DOUBLE_NUMBER col:12 row:11
-) WITH TYPE RPAR col:15 row:11
-; WITH TYPE SEMICOLON col:16 row:11
-} WITH TYPE RBRACE col:1 row:12
+5.5 WITH TYPE DOUBLE_NUMBER col:5 row:11
++ WITH TYPE PLUS col:8 row:11
+1.5 WITH TYPE DOUBLE_NUMBER col:9 row:11
+; WITH TYPE SEMICOLON col:12 row:11
+c WITH TYPE IDENTIFIER col:3 row:12
+*= WITH TYPE STAREQUAL col:4 row:12
+d WITH TYPE IDENTIFIER col:6 row:12
+; WITH TYPE SEMICOLON col:7 row:12
+println! WITH TYPE PRINTLN col:3 row:13
+( WITH TYPE LPAR col:11 row:13
+" WITH TYPE QUOTES col:12 row:13
+{ WITH TYPE LBRACE col:13 row:13
+} WITH TYPE RBRACE col:14 row:13
+" WITH TYPE QUOTES col:15 row:13
+, WITH TYPE COMMA col:17 row:13
+a WITH TYPE IDENTIFIER col:19 row:13
+) WITH TYPE RPAR col:20 row:13
+; WITH TYPE SEMICOLON col:21 row:13
+println! WITH TYPE PRINTLN col:3 row:14
+( WITH TYPE LPAR col:11 row:14
+" WITH TYPE QUOTES col:12 row:14
+{ WITH TYPE LBRACE col:13 row:14
+} WITH TYPE RBRACE col:14 row:14
+" WITH TYPE QUOTES col:15 row:14
+, WITH TYPE COMMA col:17 row:14
+c WITH TYPE IDENTIFIER col:19 row:14
+) WITH TYPE RPAR col:20 row:14
+; WITH TYPE SEMICOLON col:21 row:14
+println! WITH TYPE PRINTLN col:3 row:15
+( WITH TYPE LPAR col:11 row:15
+" WITH TYPE QUOTES col:12 row:15
+{ WITH TYPE LBRACE col:13 row:15
+} WITH TYPE RBRACE col:14 row:15
+" WITH TYPE QUOTES col:15 row:15
+, WITH TYPE COMMA col:17 row:15
+e WITH TYPE IDENTIFIER col:19 row:15
+) WITH TYPE RPAR col:20 row:15
+; WITH TYPE SEMICOLON col:21 row:15
+println! WITH TYPE PRINTLN col:3 row:16
+( WITH TYPE LPAR col:11 row:16
+" WITH TYPE QUOTES col:12 row:16
+{ WITH TYPE LBRACE col:13 row:16
+} WITH TYPE RBRACE col:14 row:16
+" WITH TYPE QUOTES col:15 row:16
+, WITH TYPE COMMA col:17 row:16
+f WITH TYPE IDENTIFIER col:19 row:16
+) WITH TYPE RPAR col:20 row:16
+; WITH TYPE SEMICOLON col:21 row:16
+} WITH TYPE RBRACE col:1 row:17
 
 ------ AST ------
 +-Program
@@ -1385,13 +311,26 @@ a WITH TYPE IDENTIFIER col:5 row:11
                   +-LHS
                     +-PrimaryExpression
                       +-LiteralExpression
-                        +-FLOAT_LITERAL (1.2)
+                        +-INTEGER_LITERAL (1)
           +-TOKEN (;)
           +-Statement
             +-DeclarationStatement
               +-TOKEN (let)
               +-VariableDefinition
                 +-Variable (b)
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (1)
+          +-TOKEN (;)
+          +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (c)
               +-TOKEN (=)
               +-DeclarationRightStatement
                 +-BinaryExpression
@@ -1404,7 +343,20 @@ a WITH TYPE IDENTIFIER col:5 row:11
             +-DeclarationStatement
               +-TOKEN (let)
               +-VariableDefinition
-                +-Variable (c)
+                +-Variable (d)
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-FLOAT_LITERAL (1.4)
+          +-TOKEN (;)
+          +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (e)
               +-TOKEN (=)
               +-DeclarationRightStatement
                 +-BinaryExpression
@@ -1414,12 +366,591 @@ a WITH TYPE IDENTIFIER col:5 row:11
                         +-CHAR_STR_LITERAL ('a')
           +-TOKEN (;)
           +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (f)
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-BOOLEAN_LITERAL
+          +-TOKEN (;)
+          +-Statement
+            +-AssignmentExpression
+              +-Variable (a)
+              +-AssignmentOperator (=)
+              +-BinaryExpression
+                +-LHS
+                  +-PrimaryExpression
+                    +-LiteralExpression
+                      +-INTEGER_LITERAL (5)
+                +-OP (+)
+                +-RHS
+                  +-PrimaryExpression
+                    +-LiteralExpression
+                      +-INTEGER_LITERAL (1)
+          +-TOKEN (;)
+          +-Statement
+            +-AssignmentExpression
+              +-Variable (a)
+              +-AssignmentOperator (*=)
+              +-BinaryExpression
+                +-LHS
+                  +-PrimaryExpression
+                    +-Variable (b)
+          +-TOKEN (;)
+          +-Statement
+            +-AssignmentExpression
+              +-Variable (a)
+              +-AssignmentOperator (*=)
+              +-BinaryExpression
+                +-LHS
+                  +-PrimaryExpression
+                    +-LiteralExpression
+                      +-INTEGER_LITERAL (30)
+          +-TOKEN (;)
+          +-Statement
+            +-AssignmentExpression
+              +-Variable (c)
+              +-AssignmentOperator (=)
+              +-BinaryExpression
+                +-LHS
+                  +-PrimaryExpression
+                    +-LiteralExpression
+                      +-FLOAT_LITERAL (5.5)
+                +-OP (+)
+                +-RHS
+                  +-PrimaryExpression
+                    +-LiteralExpression
+                      +-FLOAT_LITERAL (1.5)
+          +-TOKEN (;)
+          +-Statement
+            +-AssignmentExpression
+              +-Variable (c)
+              +-AssignmentOperator (*=)
+              +-BinaryExpression
+                +-LHS
+                  +-PrimaryExpression
+                    +-Variable (d)
+          +-TOKEN (;)
+          +-Statement
             +-PRINTLN
               +-TOKEN (println!)
               +-TOKEN (()
               +-TOKEN (")
               +-TOKEN (")
+              +-Variable (a)
               +-TOKEN ())
+          +-TOKEN (;)
+          +-Statement
+            +-PRINTLN
+              +-TOKEN (println!)
+              +-TOKEN (()
+              +-TOKEN (")
+              +-TOKEN (")
+              +-Variable (c)
+              +-TOKEN ())
+          +-TOKEN (;)
+          +-Statement
+            +-PRINTLN
+              +-TOKEN (println!)
+              +-TOKEN (()
+              +-TOKEN (")
+              +-TOKEN (")
+              +-Variable (e)
+              +-TOKEN ())
+          +-TOKEN (;)
+          +-Statement
+            +-PRINTLN
+              +-TOKEN (println!)
+              +-TOKEN (()
+              +-TOKEN (")
+              +-TOKEN (")
+              +-Variable (f)
+              +-TOKEN ())
+          +-TOKEN (;)
+        +-TOKEN (})
+
+------ TOKENS ------
+fn WITH TYPE FN col:1 row:1
+main WITH TYPE IDENTIFIER col:4 row:1
+( WITH TYPE LPAR col:8 row:1
+) WITH TYPE RPAR col:9 row:1
+{ WITH TYPE LBRACE col:1 row:2
+let WITH TYPE LET col:2 row:4
+sum WITH TYPE IDENTIFIER col:6 row:4
+= WITH TYPE SET col:9 row:4
+0 WITH TYPE NUMBER col:10 row:4
+; WITH TYPE SEMICOLON col:11 row:4
+let WITH TYPE LET col:2 row:6
+b WITH TYPE IDENTIFIER col:6 row:6
+: WITH TYPE COLON col:8 row:6
+i16 WITH TYPE I16 col:10 row:6
+= WITH TYPE SET col:14 row:6
+1 WITH TYPE NUMBER col:16 row:6
+; WITH TYPE SEMICOLON col:17 row:6
+for WITH TYPE FOR col:3 row:8
+a WITH TYPE IDENTIFIER col:7 row:8
+in WITH TYPE IN col:9 row:8
+1 WITH TYPE NUMBER col:12 row:8
+.. WITH TYPE DOUBLE_POINT col:14 row:8
+9 WITH TYPE NUMBER col:17 row:8
+{ WITH TYPE LBRACE col:3 row:10
+sum WITH TYPE IDENTIFIER col:2 row:11
++= WITH TYPE PLUSEQUAL col:6 row:11
+a WITH TYPE IDENTIFIER col:8 row:11
+; WITH TYPE SEMICOLON col:9 row:11
+b WITH TYPE IDENTIFIER col:2 row:13
+*= WITH TYPE STAREQUAL col:3 row:13
+sum WITH TYPE IDENTIFIER col:5 row:13
+; WITH TYPE SEMICOLON col:8 row:13
+let WITH TYPE LET col:2 row:15
+temp WITH TYPE IDENTIFIER col:6 row:15
+= WITH TYPE SET col:11 row:15
+sum WITH TYPE IDENTIFIER col:13 row:15
++ WITH TYPE PLUS col:17 row:15
+b WITH TYPE IDENTIFIER col:19 row:15
+; WITH TYPE SEMICOLON col:20 row:15
+} WITH TYPE RBRACE col:3 row:17
+println! WITH TYPE PRINTLN col:3 row:18
+( WITH TYPE LPAR col:11 row:18
+" WITH TYPE QUOTES col:12 row:18
+{ WITH TYPE LBRACE col:13 row:18
+} WITH TYPE RBRACE col:14 row:18
+" WITH TYPE QUOTES col:15 row:18
+, WITH TYPE COMMA col:17 row:18
+sum WITH TYPE IDENTIFIER col:19 row:18
+) WITH TYPE RPAR col:22 row:18
+; WITH TYPE SEMICOLON col:23 row:18
+} WITH TYPE RBRACE col:1 row:19
+
+------ AST ------
++-Program
+  +-FunctionDefinitions
+    +-FunctionDefinition
+      +-TOKEN (fn)
+      +-FunctionIdentifier
+      +-TOKEN (()
+      +-ParameterList
+      +-BlockExpression
+        +-TOKEN ({)
+        +-Statements
+          +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (sum)
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (0)
+          +-TOKEN (;)
+          +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (b)
+              +-TOKEN (:)
+              +-DataType
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (1)
+          +-TOKEN (;)
+          +-CycleExpression
+            +-ForExpression
+              +-TOKEN (for)
+              +-Identifier (a)
+              +-TOKEN (in)
+              +-BinaryExpression
+                +-LHS
+                  +-PrimaryExpression
+                    +-LiteralExpression
+                      +-INTEGER_LITERAL (1)
+              +-TOKEN (..)
+              +-BinaryExpression
+                +-LHS
+                  +-PrimaryExpression
+                    +-LiteralExpression
+                      +-INTEGER_LITERAL (9)
+              +-BlockExpression
+                +-TOKEN ({)
+                +-Statements
+                  +-Statement
+                    +-AssignmentExpression
+                      +-Variable (sum)
+                      +-AssignmentOperator (+=)
+                      +-BinaryExpression
+                        +-LHS
+                          +-PrimaryExpression
+                            +-Variable (a)
+                  +-TOKEN (;)
+                  +-Statement
+                    +-AssignmentExpression
+                      +-Variable (b)
+                      +-AssignmentOperator (*=)
+                      +-BinaryExpression
+                        +-LHS
+                          +-PrimaryExpression
+                            +-Variable (sum)
+                  +-TOKEN (;)
+                  +-Statement
+                    +-DeclarationStatement
+                      +-TOKEN (let)
+                      +-VariableDefinition
+                        +-Variable (temp)
+                      +-TOKEN (=)
+                      +-DeclarationRightStatement
+                        +-BinaryExpression
+                          +-LHS
+                            +-PrimaryExpression
+                              +-Variable (sum)
+                          +-OP (+)
+                          +-RHS
+                            +-PrimaryExpression
+                              +-Variable (b)
+                  +-TOKEN (;)
+                +-TOKEN (})
+          +-Statement
+            +-PRINTLN
+              +-TOKEN (println!)
+              +-TOKEN (()
+              +-TOKEN (")
+              +-TOKEN (")
+              +-Variable (sum)
+              +-TOKEN ())
+          +-TOKEN (;)
+        +-TOKEN (})
+
+------ TOKENS ------
+fn WITH TYPE FN col:1 row:1
+main WITH TYPE IDENTIFIER col:4 row:1
+( WITH TYPE LPAR col:8 row:1
+) WITH TYPE RPAR col:9 row:1
+{ WITH TYPE LBRACE col:1 row:2
+let WITH TYPE LET col:2 row:4
+sum WITH TYPE IDENTIFIER col:6 row:4
+= WITH TYPE SET col:10 row:4
+0 WITH TYPE NUMBER col:12 row:4
+; WITH TYPE SEMICOLON col:13 row:4
+let WITH TYPE LET col:2 row:6
+b WITH TYPE IDENTIFIER col:6 row:6
+: WITH TYPE COLON col:8 row:6
+i16 WITH TYPE I16 col:10 row:6
+= WITH TYPE SET col:14 row:6
+0 WITH TYPE NUMBER col:16 row:6
+; WITH TYPE SEMICOLON col:17 row:6
+while WITH TYPE WHILE col:3 row:8
+b WITH TYPE IDENTIFIER col:9 row:8
+< WITH TYPE LESS col:11 row:8
+5 WITH TYPE NUMBER col:13 row:8
+{ WITH TYPE LBRACE col:3 row:10
+sum WITH TYPE IDENTIFIER col:2 row:11
++= WITH TYPE PLUSEQUAL col:6 row:11
+b WITH TYPE IDENTIFIER col:9 row:11
+; WITH TYPE SEMICOLON col:10 row:11
+b WITH TYPE IDENTIFIER col:2 row:13
++= WITH TYPE PLUSEQUAL col:4 row:13
+1 WITH TYPE NUMBER col:7 row:13
+; WITH TYPE SEMICOLON col:8 row:13
+let WITH TYPE LET col:2 row:15
+temp WITH TYPE IDENTIFIER col:6 row:15
+= WITH TYPE SET col:11 row:15
+sum WITH TYPE IDENTIFIER col:13 row:15
++ WITH TYPE PLUS col:17 row:15
+b WITH TYPE IDENTIFIER col:19 row:15
+; WITH TYPE SEMICOLON col:20 row:15
+} WITH TYPE RBRACE col:3 row:17
+println! WITH TYPE PRINTLN col:3 row:18
+( WITH TYPE LPAR col:11 row:18
+" WITH TYPE QUOTES col:12 row:18
+{ WITH TYPE LBRACE col:13 row:18
+} WITH TYPE RBRACE col:14 row:18
+" WITH TYPE QUOTES col:15 row:18
+, WITH TYPE COMMA col:16 row:18
+sum WITH TYPE IDENTIFIER col:17 row:18
+) WITH TYPE RPAR col:20 row:18
+; WITH TYPE SEMICOLON col:21 row:18
+} WITH TYPE RBRACE col:1 row:19
+
+------ AST ------
++-Program
+  +-FunctionDefinitions
+    +-FunctionDefinition
+      +-TOKEN (fn)
+      +-FunctionIdentifier
+      +-TOKEN (()
+      +-ParameterList
+      +-BlockExpression
+        +-TOKEN ({)
+        +-Statements
+          +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (sum)
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (0)
+          +-TOKEN (;)
+          +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (b)
+              +-TOKEN (:)
+              +-DataType
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (0)
+          +-TOKEN (;)
+          +-CycleExpression
+            +-WhileExpression
+              +-TOKEN (while)
+              +-ExpressionStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-Variable (b)
+                  +-OP (<)
+                  +-RHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (5)
+              +-BlockExpression
+                +-TOKEN ({)
+                +-Statements
+                  +-Statement
+                    +-AssignmentExpression
+                      +-Variable (sum)
+                      +-AssignmentOperator (+=)
+                      +-BinaryExpression
+                        +-LHS
+                          +-PrimaryExpression
+                            +-Variable (b)
+                  +-TOKEN (;)
+                  +-Statement
+                    +-AssignmentExpression
+                      +-Variable (b)
+                      +-AssignmentOperator (+=)
+                      +-BinaryExpression
+                        +-LHS
+                          +-PrimaryExpression
+                            +-LiteralExpression
+                              +-INTEGER_LITERAL (1)
+                  +-TOKEN (;)
+                  +-Statement
+                    +-DeclarationStatement
+                      +-TOKEN (let)
+                      +-VariableDefinition
+                        +-Variable (temp)
+                      +-TOKEN (=)
+                      +-DeclarationRightStatement
+                        +-BinaryExpression
+                          +-LHS
+                            +-PrimaryExpression
+                              +-Variable (sum)
+                          +-OP (+)
+                          +-RHS
+                            +-PrimaryExpression
+                              +-Variable (b)
+                  +-TOKEN (;)
+                +-TOKEN (})
+          +-Statement
+            +-PRINTLN
+              +-TOKEN (println!)
+              +-TOKEN (()
+              +-TOKEN (")
+              +-TOKEN (")
+              +-Variable (sum)
+              +-TOKEN ())
+          +-TOKEN (;)
+        +-TOKEN (})
+
+------ TOKENS ------
+fn WITH TYPE FN col:1 row:1
+add WITH TYPE IDENTIFIER col:4 row:1
+( WITH TYPE LPAR col:7 row:1
+a WITH TYPE IDENTIFIER col:8 row:1
+: WITH TYPE COLON col:9 row:1
+i16 WITH TYPE I16 col:10 row:1
+, WITH TYPE COMMA col:13 row:1
+b WITH TYPE IDENTIFIER col:14 row:1
+: WITH TYPE COLON col:15 row:1
+i16 WITH TYPE I16 col:16 row:1
+) WITH TYPE RPAR col:19 row:1
+-> WITH TYPE RETURNTYPE col:20 row:1
+i16 WITH TYPE I16 col:22 row:1
+{ WITH TYPE LBRACE col:25 row:1
+return WITH TYPE RETURN col:1 row:2
+a WITH TYPE IDENTIFIER col:8 row:2
++ WITH TYPE PLUS col:9 row:2
+b WITH TYPE IDENTIFIER col:10 row:2
+; WITH TYPE SEMICOLON col:11 row:2
+} WITH TYPE RBRACE col:1 row:3
+fn WITH TYPE FN col:1 row:4
+main WITH TYPE IDENTIFIER col:4 row:4
+( WITH TYPE LPAR col:8 row:4
+) WITH TYPE RPAR col:9 row:4
+{ WITH TYPE LBRACE col:10 row:4
+let WITH TYPE LET col:2 row:5
+a WITH TYPE IDENTIFIER col:6 row:5
+= WITH TYPE SET col:8 row:5
+1 WITH TYPE NUMBER col:10 row:5
+; WITH TYPE SEMICOLON col:11 row:5
+let WITH TYPE LET col:2 row:6
+b WITH TYPE IDENTIFIER col:6 row:6
+= WITH TYPE SET col:8 row:6
+1 WITH TYPE NUMBER col:10 row:6
+; WITH TYPE SEMICOLON col:11 row:6
+let WITH TYPE LET col:2 row:7
+c WITH TYPE IDENTIFIER col:6 row:7
+= WITH TYPE SET col:8 row:7
+add WITH TYPE IDENTIFIER col:10 row:7
+( WITH TYPE LPAR col:13 row:7
+a WITH TYPE IDENTIFIER col:14 row:7
+, WITH TYPE COMMA col:15 row:7
+b WITH TYPE IDENTIFIER col:16 row:7
+) WITH TYPE RPAR col:17 row:7
+; WITH TYPE SEMICOLON col:18 row:7
+// WITH TYPE COMMENT col:2 row:8
+// WITH TYPE COMMENT col:2 row:9
+// WITH TYPE COMMENT col:2 row:10
+a WITH TYPE IDENTIFIER col:3 row:11
+= WITH TYPE SET col:4 row:11
+5 WITH TYPE NUMBER col:5 row:11
++ WITH TYPE PLUS col:6 row:11
+6 WITH TYPE NUMBER col:7 row:11
+* WITH TYPE STAR col:8 row:11
+3 WITH TYPE NUMBER col:9 row:11
+; WITH TYPE SEMICOLON col:10 row:11
+a WITH TYPE IDENTIFIER col:3 row:12
+*= WITH TYPE STAREQUAL col:4 row:12
+5 WITH TYPE NUMBER col:6 row:12
+; WITH TYPE SEMICOLON col:7 row:12
+b WITH TYPE IDENTIFIER col:3 row:13
+= WITH TYPE SET col:4 row:13
+a WITH TYPE IDENTIFIER col:5 row:13
+* WITH TYPE STAR col:6 row:13
+( WITH TYPE LPAR col:7 row:13
+3 WITH TYPE NUMBER col:8 row:13
++ WITH TYPE PLUS col:9 row:13
+6 WITH TYPE NUMBER col:10 row:13
+) WITH TYPE RPAR col:11 row:13
+; WITH TYPE SEMICOLON col:12 row:13
+println! WITH TYPE PRINTLN col:2 row:14
+( WITH TYPE LPAR col:10 row:14
+" WITH TYPE QUOTES col:11 row:14
+{ WITH TYPE LBRACE col:12 row:14
+} WITH TYPE RBRACE col:13 row:14
+" WITH TYPE QUOTES col:14 row:14
+, WITH TYPE COMMA col:16 row:14
+c WITH TYPE IDENTIFIER col:18 row:14
+) WITH TYPE RPAR col:19 row:14
+; WITH TYPE SEMICOLON col:20 row:14
+} WITH TYPE RBRACE col:1 row:15
+
+------ AST ------
++-Program
+  +-FunctionDefinitions
+    +-FunctionDefinition
+      +-TOKEN (fn)
+      +-FunctionIdentifier
+      +-TOKEN (()
+      +-ParameterList
+        +-Variable (a)
+        +-ParameterList
+        +-DataType
+        +-TOKEN (,)
+        +-Variable (b)
+        +-ParameterList
+        +-DataType
+      +-TOKEN (->)
+      +-DataType
+      +-BlockExpression
+        +-TOKEN ({)
+        +-Statements
+          +-Statement
+            +-ExpressionStatement
+              +-ReturnExpression
+                +-TOKEN (return)
+                +-ExpressionStatement
+                  +-BinaryExpression
+                    +-LHS
+                      +-PrimaryExpression
+                        +-Variable (a)
+                    +-OP (+)
+                    +-RHS
+                      +-PrimaryExpression
+                        +-Variable (b)
+          +-TOKEN (;)
+        +-TOKEN (})
+    +-FunctionDefinition
+      +-TOKEN (fn)
+      +-FunctionIdentifier
+      +-TOKEN (()
+      +-ParameterList
+      +-BlockExpression
+        +-TOKEN ({)
+        +-Statements
+          +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (a)
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (1)
+          +-TOKEN (;)
+          +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (b)
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-BinaryExpression
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (1)
+          +-TOKEN (;)
+          +-Statement
+            +-DeclarationStatement
+              +-TOKEN (let)
+              +-VariableDefinition
+                +-Variable (c)
+              +-TOKEN (=)
+              +-DeclarationRightStatement
+                +-FunctionCall
+                  +-FunctionIdentifier
+                  +-TOKEN (()
+                  +-CallParameterList
+                    +-Variable (a)
+                    +-TOKEN (,)
+                    +-Variable (b)
+                  +-TOKEN ())
           +-TOKEN (;)
           +-COMMENT
             +-TOKEN (//)
@@ -1435,11 +966,18 @@ a WITH TYPE IDENTIFIER col:5 row:11
                 +-LHS
                   +-PrimaryExpression
                     +-LiteralExpression
-                      +-FLOAT_LITERAL (5.6)
+                      +-INTEGER_LITERAL (5)
                 +-OP (+)
                 +-RHS
-                  +-PrimaryExpression
-                    +-Variable (b)
+                  +-LHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (6)
+                  +-OP (*)
+                  +-RHS
+                    +-PrimaryExpression
+                      +-LiteralExpression
+                        +-INTEGER_LITERAL (3)
           +-TOKEN (;)
           +-Statement
             +-AssignmentExpression
@@ -1449,7 +987,7 @@ a WITH TYPE IDENTIFIER col:5 row:11
                 +-LHS
                   +-PrimaryExpression
                     +-LiteralExpression
-                      +-FLOAT_LITERAL (1.5)
+                      +-INTEGER_LITERAL (5)
           +-TOKEN (;)
           +-Statement
             +-AssignmentExpression
@@ -1467,311 +1005,22 @@ a WITH TYPE IDENTIFIER col:5 row:11
                       +-LHS
                         +-PrimaryExpression
                           +-LiteralExpression
-                            +-FLOAT_LITERAL (5.1)
+                            +-INTEGER_LITERAL (3)
                       +-OP (+)
                       +-RHS
                         +-PrimaryExpression
                           +-LiteralExpression
-                            +-FLOAT_LITERAL (6.5)
+                            +-INTEGER_LITERAL (6)
                     +-TOKEN ())
           +-TOKEN (;)
-        +-TOKEN (})
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:1 row:2
-let WITH TYPE LET col:2 row:4
-sum WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:10 row:4
-0 WITH TYPE NUMBER col:12 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-let WITH TYPE LET col:2 row:6
-b WITH TYPE IDENTIFIER col:6 row:6
-: WITH TYPE COLON col:8 row:6
-i16 WITH TYPE I16 col:10 row:6
-= WITH TYPE SET col:14 row:6
-0 WITH TYPE NUMBER col:16 row:6
-; WITH TYPE SEMICOLON col:17 row:6
-loop WITH TYPE LOOP col:3 row:8
-{ WITH TYPE LBRACE col:3 row:10
-sum WITH TYPE IDENTIFIER col:2 row:11
-+= WITH TYPE PLUSEQUAL col:6 row:11
-b WITH TYPE IDENTIFIER col:9 row:11
-; WITH TYPE SEMICOLON col:10 row:11
-b WITH TYPE IDENTIFIER col:2 row:13
-+= WITH TYPE PLUSEQUAL col:4 row:13
-1 WITH TYPE NUMBER col:7 row:13
-; WITH TYPE SEMICOLON col:8 row:13
-let WITH TYPE LET col:2 row:15
-temp WITH TYPE IDENTIFIER col:6 row:15
-= WITH TYPE SET col:11 row:15
-sum WITH TYPE IDENTIFIER col:13 row:15
-+ WITH TYPE PLUS col:17 row:15
-b WITH TYPE IDENTIFIER col:19 row:15
-; WITH TYPE SEMICOLON col:20 row:15
-if WITH TYPE IF col:2 row:17
-b WITH TYPE IDENTIFIER col:5 row:17
-== WITH TYPE EQUALITY col:7 row:17
-5 WITH TYPE NUMBER col:10 row:17
-{ WITH TYPE LBRACE col:2 row:19
-break WITH TYPE BREAK col:3 row:21
-; WITH TYPE SEMICOLON col:8 row:21
-} WITH TYPE RBRACE col:2 row:23
-} WITH TYPE RBRACE col:3 row:25
-} WITH TYPE RBRACE col:1 row:27
-
------- AST ------
-+-Program
-  +-FunctionDefinitions
-    +-FunctionDefinition
-      +-TOKEN (fn)
-      +-FunctionIdentifier
-      +-TOKEN (()
-      +-ParameterList
-      +-BlockExpression
-        +-TOKEN ({)
-        +-Statements
           +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (sum)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (0)
+            +-PRINTLN
+              +-TOKEN (println!)
+              +-TOKEN (()
+              +-TOKEN (")
+              +-TOKEN (")
+              +-Variable (c)
+              +-TOKEN ())
           +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (b)
-              +-TOKEN (:)
-              +-DataType
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (0)
-          +-TOKEN (;)
-          +-CycleExpression
-            +-LoopExpression
-              +-TOKEN (loop)
-              +-BlockExpression
-                +-TOKEN ({)
-                +-Statements
-                  +-Statement
-                    +-AssignmentExpression
-                      +-Variable (sum)
-                      +-AssignmentOperator (+=)
-                      +-BinaryExpression
-                        +-LHS
-                          +-PrimaryExpression
-                            +-Variable (b)
-                  +-TOKEN (;)
-                  +-Statement
-                    +-AssignmentExpression
-                      +-Variable (b)
-                      +-AssignmentOperator (+=)
-                      +-BinaryExpression
-                        +-LHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (1)
-                  +-TOKEN (;)
-                  +-Statement
-                    +-DeclarationStatement
-                      +-TOKEN (let)
-                      +-VariableDefinition
-                        +-Variable (temp)
-                      +-TOKEN (=)
-                      +-DeclarationRightStatement
-                        +-BinaryExpression
-                          +-LHS
-                            +-PrimaryExpression
-                              +-Variable (sum)
-                          +-OP (+)
-                          +-RHS
-                            +-PrimaryExpression
-                              +-Variable (b)
-                  +-TOKEN (;)
-                  +-IfExpression
-                    +-TOKEN (if)
-                    +-ConditionStatement
-                      +-BinaryExpression
-                        +-LHS
-                          +-PrimaryExpression
-                            +-Variable (b)
-                        +-OP (==)
-                        +-RHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (5)
-                    +-BlockExpression
-                      +-TOKEN ({)
-                      +-Statements
-                        +-Statement
-                          +-ExpressionStatement
-                            +-BreakExpression
-                        +-TOKEN (;)
-                      +-TOKEN (})
-                +-TOKEN (})
-        +-TOKEN (})
-
------- TOKENS ------
-fn WITH TYPE FN col:1 row:1
-main WITH TYPE IDENTIFIER col:4 row:1
-( WITH TYPE LPAR col:8 row:1
-) WITH TYPE RPAR col:9 row:1
-{ WITH TYPE LBRACE col:1 row:2
-let WITH TYPE LET col:2 row:4
-sum WITH TYPE IDENTIFIER col:6 row:4
-= WITH TYPE SET col:10 row:4
-0 WITH TYPE NUMBER col:12 row:4
-; WITH TYPE SEMICOLON col:13 row:4
-let WITH TYPE LET col:2 row:6
-b WITH TYPE IDENTIFIER col:6 row:6
-: WITH TYPE COLON col:8 row:6
-i16 WITH TYPE I16 col:10 row:6
-= WITH TYPE SET col:14 row:6
-0 WITH TYPE NUMBER col:16 row:6
-; WITH TYPE SEMICOLON col:17 row:6
-loop WITH TYPE LOOP col:3 row:8
-{ WITH TYPE LBRACE col:3 row:10
-sum WITH TYPE IDENTIFIER col:2 row:11
-+= WITH TYPE PLUSEQUAL col:6 row:11
-b WITH TYPE IDENTIFIER col:9 row:11
-; WITH TYPE SEMICOLON col:10 row:11
-b WITH TYPE IDENTIFIER col:2 row:13
-+= WITH TYPE PLUSEQUAL col:4 row:13
-1 WITH TYPE NUMBER col:7 row:13
-; WITH TYPE SEMICOLON col:8 row:13
-let WITH TYPE LET col:2 row:15
-temp WITH TYPE IDENTIFIER col:6 row:15
-= WITH TYPE SET col:11 row:15
-sum WITH TYPE IDENTIFIER col:13 row:15
-+ WITH TYPE PLUS col:17 row:15
-b WITH TYPE IDENTIFIER col:19 row:15
-; WITH TYPE SEMICOLON col:20 row:15
-if WITH TYPE IF col:2 row:17
-b WITH TYPE IDENTIFIER col:5 row:17
-== WITH TYPE EQUALITY col:7 row:17
-5 WITH TYPE NUMBER col:10 row:17
-{ WITH TYPE LBRACE col:2 row:19
-break WITH TYPE BREAK col:3 row:21
-; WITH TYPE SEMICOLON col:8 row:21
-} WITH TYPE RBRACE col:2 row:23
-} WITH TYPE RBRACE col:3 row:25
-} WITH TYPE RBRACE col:1 row:27
-
------- AST ------
-+-Program
-  +-FunctionDefinitions
-    +-FunctionDefinition
-      +-TOKEN (fn)
-      +-FunctionIdentifier
-      +-TOKEN (()
-      +-ParameterList
-      +-BlockExpression
-        +-TOKEN ({)
-        +-Statements
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (sum)
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (0)
-          +-TOKEN (;)
-          +-Statement
-            +-DeclarationStatement
-              +-TOKEN (let)
-              +-VariableDefinition
-                +-Variable (b)
-              +-TOKEN (:)
-              +-DataType
-              +-TOKEN (=)
-              +-DeclarationRightStatement
-                +-BinaryExpression
-                  +-LHS
-                    +-PrimaryExpression
-                      +-LiteralExpression
-                        +-INTEGER_LITERAL (0)
-          +-TOKEN (;)
-          +-CycleExpression
-            +-LoopExpression
-              +-TOKEN (loop)
-              +-BlockExpression
-                +-TOKEN ({)
-                +-Statements
-                  +-Statement
-                    +-AssignmentExpression
-                      +-Variable (sum)
-                      +-AssignmentOperator (+=)
-                      +-BinaryExpression
-                        +-LHS
-                          +-PrimaryExpression
-                            +-Variable (b)
-                  +-TOKEN (;)
-                  +-Statement
-                    +-AssignmentExpression
-                      +-Variable (b)
-                      +-AssignmentOperator (+=)
-                      +-BinaryExpression
-                        +-LHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (1)
-                  +-TOKEN (;)
-                  +-Statement
-                    +-DeclarationStatement
-                      +-TOKEN (let)
-                      +-VariableDefinition
-                        +-Variable (temp)
-                      +-TOKEN (=)
-                      +-DeclarationRightStatement
-                        +-BinaryExpression
-                          +-LHS
-                            +-PrimaryExpression
-                              +-Variable (sum)
-                          +-OP (+)
-                          +-RHS
-                            +-PrimaryExpression
-                              +-Variable (b)
-                  +-TOKEN (;)
-                  +-IfExpression
-                    +-TOKEN (if)
-                    +-ConditionStatement
-                      +-BinaryExpression
-                        +-LHS
-                          +-PrimaryExpression
-                            +-Variable (b)
-                        +-OP (==)
-                        +-RHS
-                          +-PrimaryExpression
-                            +-LiteralExpression
-                              +-INTEGER_LITERAL (5)
-                    +-BlockExpression
-                      +-TOKEN ({)
-                      +-Statements
-                        +-Statement
-                          +-ExpressionStatement
-                            +-BreakExpression
-                        +-TOKEN (;)
-                      +-TOKEN (})
-                +-TOKEN (})
         +-TOKEN (})
 
